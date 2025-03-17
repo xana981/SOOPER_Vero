@@ -38,7 +38,7 @@ public class SupermercadoView {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
+
 		btnNewButton_1 = new JButton("New button");
 		frmSupermercado.getContentPane().add(btnNewButton_1, "cell 0 3");
 		frmSupermercado.setVisible(true);
