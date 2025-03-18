@@ -6,41 +6,88 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class SupermercadoView {
 
 	protected JFrame frmSupermercado;
 	private JTextField textField;
 	private JTable table;
-	private JButton btnNewButton_1;
+	private JButton btnEmbolsar;
+	private JScrollPane scrollPane_1;
+	private JTable tablaEmbolsados;
+	private JButton btnEnvioAlmacen;
+	private SupermercadoController controller;
 
 
-	 public SupermercadoView() {
+	 public SupermercadoView(SupermercadoController controlador) {
 		// TODO Auto-generated constructor stub
-		initialize();
+		initialize(controlador);
 	} 
 
-	private void initialize() {
+	private void initialize(SupermercadoController controlador) {
 
 		frmSupermercado = new JFrame();
-		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][]"));
+		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][grow][]"));
 		frmSupermercado.setBounds(0,0,500,500);
+		this.controller = controlador; //aqui ya tengo vinculada la vista con el controlador que creo en el swingMain
 		
 		textField = new JTextField();
+		textField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textField.setText("");
+			}
+		});
+	
+		textField.setText("<introduce aqui el id Pedido>");
 		frmSupermercado.getContentPane().add(textField, "cell 0 0,growx");
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("New button");
-		frmSupermercado.getContentPane().add(btnNewButton, "cell 0 1");
+		JButton btnAniadirPedido = new JButton("Añadir Pedido");
+		btnAniadirPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.AniadirArticulosPedido(Integer.parseInt(textField.getText()));
+			}
+		});
+		
+		frmSupermercado.getContentPane().add(btnAniadirPedido, "cell 0 1");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		frmSupermercado.getContentPane().add(scrollPane, "cell 0 2,grow");
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"idArticulo", "Descripcion", "Volumen"
+			}
+		));
 		scrollPane.setViewportView(table);
 
-		btnNewButton_1 = new JButton("New button");
-		frmSupermercado.getContentPane().add(btnNewButton_1, "cell 0 3");
+		btnEmbolsar = new JButton("Embolsar");
+		frmSupermercado.getContentPane().add(btnEmbolsar, "cell 0 3");
+		
+		scrollPane_1 = new JScrollPane();
+		frmSupermercado.getContentPane().add(scrollPane_1, "cell 0 4,grow");
+		
+		tablaEmbolsados = new JTable();
+		tablaEmbolsados.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"idContenedor", "idArticulo"
+			}
+		));
+		scrollPane_1.setViewportView(tablaEmbolsados);
+		
+		btnEnvioAlmacen = new JButton("Enviar a almacén");
+		frmSupermercado.getContentPane().add(btnEnvioAlmacen, "cell 0 5");
 		frmSupermercado.setVisible(true);
 	}
 	

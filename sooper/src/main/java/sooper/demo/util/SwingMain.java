@@ -3,6 +3,8 @@ package sooper.demo.util;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import sooper.demo.tkrun.SupermercadoController;
+import sooper.demo.tkrun.SupermercadoModel;
 import sooper.demo.tkrun.SupermercadoView;
 
 import javax.swing.BoxLayout;
@@ -59,8 +61,9 @@ public class SwingMain {
 		JButton btnNewButton = new JButton("BIENVENIDO AL SUPERMERCADO ONLINE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SupermercadoView supermercado = new SupermercadoView();	
-				supermercado.getFrame().setVisible(true);
+				SupermercadoController controller = new SupermercadoController();
+				controller.setVistaModel(new SupermercadoView(controller), new SupermercadoModel());
+				
 				}
 		}
 		);
