@@ -23,6 +23,9 @@ public class SupermercadoController {
 		//metodo para rellenar la tabla de articulos y pedidos
 		
 		List<Object[]> lista=model.AniadirArticulosPedido(i);
+		for (i=0; i<lista.size();i++) {
+			view.rellenaListaArticulos(lista.get(i));
+		}
 		
 	};
 	

@@ -22,6 +22,8 @@ public class SupermercadoView {
 	private JTable tablaEmbolsados;
 	private JButton btnEnvioAlmacen;
 	private SupermercadoController controller;
+	private DefaultTableModel modeloArticulo;
+	private DefaultTableModel modeloListaEmbolsados;
 
 
 	 public SupermercadoView(SupermercadoController controlador) {
@@ -31,6 +33,20 @@ public class SupermercadoView {
 
 	private void initialize(SupermercadoController controlador) {
 
+		modeloArticulo = new DefaultTableModel(new Object[][] {
+		},
+		new String[] {
+				"idArticulo", "Descripcion", "Volumen"
+			}
+		);
+		
+		modeloListaEmbolsados = new DefaultTableModel(new Object[][] {
+		},
+		new String[] {
+				"idArticulo", "idContenedor"
+			});
+		
+		
 		frmSupermercado = new JFrame();
 		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][grow][]"));
 		frmSupermercado.setBounds(0,0,500,500);
@@ -61,13 +77,7 @@ public class SupermercadoView {
 		frmSupermercado.getContentPane().add(scrollPane, "cell 0 2,grow");
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"idArticulo", "Descripcion", "Volumen"
-			}
-		));
+		table.setModel(modeloListaEmbolsados);
 		scrollPane.setViewportView(table);
 
 		btnEmbolsar = new JButton("Embolsar");
@@ -77,13 +87,7 @@ public class SupermercadoView {
 		frmSupermercado.getContentPane().add(scrollPane_1, "cell 0 4,grow");
 		
 		tablaEmbolsados = new JTable();
-		tablaEmbolsados.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"idContenedor", "idArticulo"
-			}
-		));
+		tablaEmbolsados.setModel(modeloListaEmbolsados);
 		scrollPane_1.setViewportView(tablaEmbolsados);
 		
 		btnEnvioAlmacen = new JButton("Enviar a almacén");
@@ -93,5 +97,12 @@ public class SupermercadoView {
 	
 	public JFrame getFrame() {
 		return this.frmSupermercado;
+	}
+	
+public void rellenaListaArticulos(Object[] rowArticulo) {
+		
+		this.modeloArticulo.addRow(rowArticulo);	
+		this.table.setModel(modeloArticulo);
+		
 	}
 }
