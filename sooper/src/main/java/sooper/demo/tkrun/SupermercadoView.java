@@ -37,7 +37,7 @@ public class SupermercadoView {
 		modeloArticulo = new DefaultTableModel(new Object[][] {
 		},
 		new String[] {
-				"idArticulo", "Descripcion", "Volumen"
+				"idArticulo", "idPedido", "Volumen"
 			}
 		);
 		
