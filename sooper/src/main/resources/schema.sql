@@ -16,10 +16,11 @@ CREATE TABLE "contenedor" (
 );
 
 CREATE TABLE "articuloPedido" (
-	"articulo"	INTEGER NOT NULL,
-	"pedido"	INTEGER NOT NULL,
-	PRIMARY KEY("articulo","pedido"),
-	FOREIGN KEY("articulo") REFERENCES "producto"("idProducto")
+	"idArticulo"	INTEGER NOT NULL,
+	"idPedido"	INTEGER NOT NULL,
+	"volumen" integer not null,
+	PRIMARY KEY("idArticulo","idPedido"),
+	FOREIGN KEY("idArticulo") REFERENCES "articulo"("idArticulo")
 );
 
 CREATE TABLE "pedido" (

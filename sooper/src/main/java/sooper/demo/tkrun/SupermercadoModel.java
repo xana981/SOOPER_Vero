@@ -12,11 +12,9 @@ public class SupermercadoModel {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
 		
-		String sql = "SELECT * FROM ARTICULO WHERE IDARTICULO = (SELECT IDARTICULO FROM ARTICULOPEDIDO WHERE IDPEDIDO=?)";
+		String sql = "SELECT * FROM ARTICULOPEDIDO WHERE IDPEDIDO = ?";
 		lista = db.executeQueryArray(sql, i);
 		return lista;
 	}
 	
-	
-
 }
