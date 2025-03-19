@@ -62,7 +62,10 @@ public class SwingMain {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SupermercadoController controller = new SupermercadoController();
-				controller.setVistaModel(new SupermercadoView(controller), new SupermercadoModel());
+				SupermercadoView vista = new SupermercadoView(controller);
+				SupermercadoModel modelo = new SupermercadoModel();
+				
+				controller.setVistaModel(vista, modelo);
 				
 				}
 		}

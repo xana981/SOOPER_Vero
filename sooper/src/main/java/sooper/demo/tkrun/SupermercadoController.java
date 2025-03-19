@@ -9,7 +9,7 @@ public class SupermercadoController {
 	private SupermercadoModel model;
 	private SupermercadoView view;
 	
-	
+		
 	public void setVistaModel( SupermercadoView v , SupermercadoModel m) {
 		this.model = m;
 		this.view = v;
