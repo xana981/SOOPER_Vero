@@ -25,6 +25,7 @@ public class SupermercadoView {
 	private DefaultTableModel modeloArticulo;
 	private DefaultTableModel modeloListaEmbolsados;
 
+	
 
 	 public SupermercadoView(SupermercadoController controlador) {
 		// TODO Auto-generated constructor stub
