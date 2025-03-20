@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
 
 public class SupermercadoView {
 
@@ -24,6 +25,9 @@ public class SupermercadoView {
 	private SupermercadoController controller;
 	private DefaultTableModel modeloArticulo;
 	private DefaultTableModel modeloListaEmbolsados;
+	private JTextField textField_1;
+	private JButton btnNewButton;
+	private JLabel lblNewLabel;
 
 	
 
@@ -49,7 +53,7 @@ public class SupermercadoView {
 		
 		
 		frmSupermercado = new JFrame();
-		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][grow][]"));
+		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow][grow][]", "[][][grow][][grow][][]"));
 		frmSupermercado.setBounds(0,0,500,500);
 		this.controller = controlador; //aqui ya tengo vinculada la vista con el controlador que creo en el swingMain
 		
@@ -69,8 +73,16 @@ public class SupermercadoView {
 		btnAniadirPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.AniadirArticulosPedido(Integer.parseInt(textField.getText()));
+				
 			}
 		});
+		
+		textField_1 = new JTextField();
+		frmSupermercado.getContentPane().add(textField_1, "cell 1 0,growx");
+		textField_1.setColumns(10);
+		
+		lblNewLabel = new JLabel("New label");
+		frmSupermercado.getContentPane().add(lblNewLabel, "cell 2 0");
 		
 		frmSupermercado.getContentPane().add(btnAniadirPedido, "cell 0 1");
 		
@@ -78,11 +90,18 @@ public class SupermercadoView {
 		frmSupermercado.getContentPane().add(scrollPane, "cell 0 2,grow");
 		
 		table = new JTable();
-		table.setModel(modeloListaEmbolsados);
+		table.setModel(modeloArticulo);
+		table.getColumnModel().getColumn(2).setPreferredWidth(149);
 		scrollPane.setViewportView(table);
 
 		btnEmbolsar = new JButton("Embolsar");
+		btnEmbolsar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.embolsarArticulos();
+			}
+		});
 		frmSupermercado.getContentPane().add(btnEmbolsar, "cell 0 3");
+		
 		
 		scrollPane_1 = new JScrollPane();
 		frmSupermercado.getContentPane().add(scrollPane_1, "cell 0 4,grow");
@@ -92,7 +111,11 @@ public class SupermercadoView {
 		scrollPane_1.setViewportView(tablaEmbolsados);
 		
 		btnEnvioAlmacen = new JButton("Enviar a almacén");
+		
 		frmSupermercado.getContentPane().add(btnEnvioAlmacen, "cell 0 5");
+		
+		btnNewButton = new JButton("New button");
+		frmSupermercado.getContentPane().add(btnNewButton, "cell 0 6");
 		frmSupermercado.setVisible(true);
 	}
 	
@@ -102,8 +125,9 @@ public class SupermercadoView {
 	
 public void rellenaListaArticulos(Object[] rowArticulo) {
 		
-		this.modeloArticulo.addRow(rowArticulo);	
-		this.table.setModel(modeloArticulo);
+		this.modeloArticulo.addRow(rowArticulo);//para añadir una fila a la tabla lo primero que tengo que añadir es la 
+												//fila al modelo correspondiente a esa tabla
+		this.table.setModel(modeloArticulo); //una vez la tenga añadida al modelo, muestro el modelo en la tabla
 		
 	}
 }

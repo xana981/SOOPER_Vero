@@ -61,10 +61,10 @@ public class SwingMain {
 		JButton btnNewButton = new JButton("BIENVENIDO AL SUPERMERCADO ONLINE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				SupermercadoController controller = new SupermercadoController();
 				SupermercadoView vista = new SupermercadoView(controller);
-				SupermercadoModel modelo = new SupermercadoModel();
-				
+				SupermercadoModel modelo = new SupermercadoModel();			
 				controller.setVistaModel(vista, modelo);
 				
 				}

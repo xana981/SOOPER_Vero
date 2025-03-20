@@ -23,6 +23,8 @@ public class SupermercadoController {
 		//metodo para rellenar la tabla de articulos y pedidos
 		
 		List<Object[]> lista=model.AniadirArticulosPedido(i);
+		//una vez que me devuelva el modelo el resultado de la consulta, analizo la lista devuelta:
+		
 		for (i=0; i<lista.size();i++) {
 			view.rellenaListaArticulos(lista.get(i));
 		}
@@ -44,6 +46,12 @@ public class SupermercadoController {
 
 	public void setModel(SupermercadoModel model) {
 		this.model = model;
+	}
+
+	public void embolsarArticulos() {
+		// TODO Auto-generated method stub
+		model.embolsaArticulo();
+		
 	}
 
 }
