@@ -21,12 +21,12 @@ public class SupermercadoController {
 	
 	public void AniadirArticulosPedido(int i) {
 		//metodo para rellenar la tabla de articulos y pedidos
-		
+		int j;
 		List<Object[]> lista=model.AniadirArticulosPedido(i);
 		//una vez que me devuelva el modelo el resultado de la consulta, analizo la lista devuelta:
 		
-		for (i=0; i<lista.size();i++) {
-			view.rellenaListaArticulos(lista.get(i));
+		for (j=0; j<lista.size();j++) {
+			view.rellenaListaArticulos(lista.get(j));
 		}
 		
 	};
