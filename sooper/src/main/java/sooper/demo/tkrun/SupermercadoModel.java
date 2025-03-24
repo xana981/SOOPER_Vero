@@ -15,7 +15,7 @@ public class SupermercadoModel {
 		
 		String sql = "SELECT * FROM ARTICULOPEDIDO WHERE IDPEDIDO = ?"; //crear el string que voy a ejecutar en la base de datos
 		
-		lista = db.executeQueryArray(sql, i);
+		lista = db.executeQueryArray(sql, 1);
 		
 		return lista;
 		
