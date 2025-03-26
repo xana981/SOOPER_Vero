@@ -25,9 +25,6 @@ public class SupermercadoView {
 	private SupermercadoController controller;
 	private DefaultTableModel modeloArticulo;
 	private DefaultTableModel modeloListaEmbolsados;
-	private JTextField textField_1;
-	private JButton btnNewButton;
-	private JLabel lblNewLabel;
 
 	
 
@@ -53,7 +50,7 @@ public class SupermercadoView {
 		
 		
 		frmSupermercado = new JFrame();
-		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow][grow][]", "[][][grow][][grow][][]"));
+		frmSupermercado.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][grow][][]"));
 		frmSupermercado.setBounds(0,0,500,500);
 		this.controller = controlador; //aqui ya tengo vinculada la vista con el controlador que creo en el swingMain
 		
@@ -76,13 +73,6 @@ public class SupermercadoView {
 				
 			}
 		});
-		
-		textField_1 = new JTextField();
-		frmSupermercado.getContentPane().add(textField_1, "cell 1 0,growx");
-		textField_1.setColumns(10);
-		
-		lblNewLabel = new JLabel("New label");
-		frmSupermercado.getContentPane().add(lblNewLabel, "cell 2 0");
 		
 		frmSupermercado.getContentPane().add(btnAniadirPedido, "cell 0 1");
 		
@@ -111,11 +101,14 @@ public class SupermercadoView {
 		scrollPane_1.setViewportView(tablaEmbolsados);
 		
 		btnEnvioAlmacen = new JButton("Enviar a almacén");
+		btnEnvioAlmacen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GestionAlmacenView gestionAlmacenVista = new GestionAlmacenView();
+				//gestionAlmacenVista.getFrame().setVisible(true);
+			}
+		});
 		
 		frmSupermercado.getContentPane().add(btnEnvioAlmacen, "cell 0 5");
-		
-		btnNewButton = new JButton("New button");
-		frmSupermercado.getContentPane().add(btnNewButton, "cell 0 6");
 		frmSupermercado.setVisible(true);
 	}
 	

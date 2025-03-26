@@ -19,6 +19,7 @@ CREATE TABLE "articuloPedido" (
 	"idArticulo"	INTEGER NOT NULL,
 	"idPedido"	INTEGER NOT NULL,
 	"volumen" integer not null,
+	"estado" INTEGER not null,
 	PRIMARY KEY("idArticulo","idPedido"),
 	FOREIGN KEY("idArticulo") REFERENCES "articulo"("idArticulo")
 );
