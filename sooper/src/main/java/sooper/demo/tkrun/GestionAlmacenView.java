@@ -17,6 +17,7 @@ public class GestionAlmacenView {
 	
  protected JFrame frame;
  private JTable table;
+ private DefaultTableModel modeloTabla;
  
  public GestionAlmacenView() {
 	 
@@ -28,6 +29,13 @@ public class GestionAlmacenView {
  */
 private void initView() {
 	
+	this.modeloTabla = new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"idArticulo", "idContenedor"
+			}
+		);
 	this.frame = new JFrame();
 	frame.setBounds(0, 0, 400, 500);
 	frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][grow][]"));
@@ -39,13 +47,7 @@ private void initView() {
 	frame.getContentPane().add(scrollPane, "cell 0 1,grow");
 	
 	table = new JTable();
-	table.setModel(new DefaultTableModel(
-		new Object[][] {
-		},
-		new String[] {
-			"idArticulo", "idContenedor"
-		}
-	));
+	table.setModel(modeloTabla);
 	scrollPane.setViewportView(table);
 	
 	JButton btnNewButton = new JButton("Añadir Articulo");
