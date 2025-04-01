@@ -13,13 +13,16 @@ import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 
+
 public class GestionAlmacenView {
 	
- protected JFrame frame;
+ protected JFrame frame ;
  private JTable table;
  private DefaultTableModel modeloTabla;
+
  
- public GestionAlmacenView() {
+ 
+ public GestionAlmacenView() {	 
 	 
 	 this.initView();
  }
@@ -28,6 +31,7 @@ public class GestionAlmacenView {
  * @wbp.parser.entryPoint
  */
 private void initView() {
+	
 	
 	this.modeloTabla = new DefaultTableModel(
 			new Object[][] {
@@ -51,7 +55,10 @@ private void initView() {
 	scrollPane.setViewportView(table);
 	
 	JButton btnNewButton = new JButton("Añadir Articulo");
+	
 	frame.getContentPane().add(btnNewButton, "cell 0 2");
+	
+	 
 	
 	this.frame.setVisible(true);
 	
@@ -60,6 +67,8 @@ private void initView() {
 public JFrame getFrame() {
 	return this.frame;
 }
+
+
 	
 
 }

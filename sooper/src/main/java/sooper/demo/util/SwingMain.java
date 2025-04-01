@@ -64,7 +64,8 @@ public class SwingMain {
 				
 				SupermercadoController controller = new SupermercadoController();
 				SupermercadoView vista = new SupermercadoView(controller);
-				SupermercadoModel modelo = new SupermercadoModel();			
+				SupermercadoModel modelo = new SupermercadoModel();		
+				
 				controller.setVistaModel(vista, modelo);
 				
 				}

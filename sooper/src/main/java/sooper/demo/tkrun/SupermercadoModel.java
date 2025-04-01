@@ -1,5 +1,6 @@
 package sooper.demo.tkrun;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sooper.demo.util.Database;
@@ -15,7 +16,7 @@ public class SupermercadoModel {
 		
 		String sql = "SELECT * FROM ARTICULOPEDIDO WHERE IDPEDIDO = ?"; //crear el string que voy a ejecutar en la base de datos
 		
-		lista = db.executeQueryArray(sql, 1);
+		lista = db.executeQueryArray(sql, i);
 		
 		return lista;
 		
@@ -23,7 +24,11 @@ public class SupermercadoModel {
 
 	public void embolsaArticulo() {
 		
+		List<Object[]> lista = null;
 		
+		lista = new ArrayList<Object[]>();
+		
+		lista = db.executeQueryArray("SELECT * FROM ARTICULOPEDIDO WHERE IDPEDIDO = ?", 1);
 	}
 	
 }
