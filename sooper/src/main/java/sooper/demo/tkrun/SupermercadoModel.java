@@ -22,13 +22,11 @@ public class SupermercadoModel {
 		
 	}
 
-	public void embolsaArticulo() {
+	public void embolsaArticulo(int idArticulo) {
 		
-		List<Object[]> lista = null;
+		String sql = ("UPDATE articuloPedido SET embolsado = ?  WHERE idArticulo = ?"); //Modificar la tabla articuloPedido el campo embolsado cuando el idArticulo sea lo seleccionado en la tabla
 		
-		lista = new ArrayList<Object[]>();
-		
-		lista = db.executeQueryArray("SELECT * FROM ARTICULOPEDIDO WHERE IDPEDIDO = ?", 1);
+		db.executeUpdate(sql,1,idArticulo); //La primera ? cambiamos embolsado por un 1 y la segunda depende del valor idArticulo 
 	}
 	
 }

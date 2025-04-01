@@ -87,7 +87,9 @@ public class SupermercadoView {
 		btnEmbolsar = new JButton("Embolsar");
 		btnEmbolsar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.embolsarArticulos();
+			
+				controller.embolsarArticulos(); //llamada al controlador
+			
 			}
 		});
 		frmSupermercado.getContentPane().add(btnEmbolsar, "cell 0 3");
@@ -118,11 +120,14 @@ public class SupermercadoView {
 		return this.frmSupermercado;
 	}
 	
-public void rellenaListaArticulos(Object[] rowArticulo) {
+	public void rellenaListaArticulos(Object[] rowArticulo) {
 		
 		this.modeloArticulo.addRow(rowArticulo);//para añadir una fila a la tabla lo primero que tengo que añadir es la 
 												//fila al modelo correspondiente a esa tabla
 		this.table.setModel(modeloArticulo); //una vez la tenga añadida al modelo, muestro el modelo en la tabla
 		
+	}		
+	public JTable getTable() {
+		return this.table;
 	}
 }

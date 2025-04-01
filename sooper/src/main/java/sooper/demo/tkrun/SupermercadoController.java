@@ -31,7 +31,6 @@ public class SupermercadoController {
 		
 	};
 	
-
 	public SupermercadoView getView() {
 		return view;
 	}
@@ -49,8 +48,14 @@ public class SupermercadoController {
 	}
 
 	public void embolsarArticulos() {
-		// TODO Auto-generated method stub
-		model.embolsaArticulo();
+		
+		String idArticulo; //creo la variable							
+		
+		idArticulo = this.view.getTable().getValueAt(this.view.getTable().getSelectedRow(),0).toString();     //inicializo la variable y le saco el valor a la tabla, lo seleccionado
+																											  //(getSelectedRow) Me devuelve el numero de fila que esta seleccionada, devuelve un entero
+		this.model.embolsaArticulo(Integer.parseInt(idArticulo));
+		
+		
 		
 	}
 
