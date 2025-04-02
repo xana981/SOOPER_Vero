@@ -9,7 +9,9 @@ delete from contenedor;
 
 INSERT INTO articulo(idArticulo,volumen,nombre,categoria) VALUES 
 (259,5,"mayonesa musa","no perecedero"),
+(258,7,"arroz","no perecedero"),
 (260,9,"agua font vella","no perecedero");
+
 
 INSERT INTO articuloPedido(idArticulo,idPedido,volumen,embolsado) VALUES
 (25,1,6,0),
@@ -17,4 +19,5 @@ INSERT INTO articuloPedido(idArticulo,idPedido,volumen,embolsado) VALUES
 (24,2,5,0),
 (30,2,2,0),
 (63,1,8,0);
+
 
