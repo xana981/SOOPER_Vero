@@ -24,7 +24,7 @@ public class SupermercadoModel {
 
 	public void embolsaArticulo(int idArticulo) {
 		
-		String sql = ("UPDATE articuloPedido SET embolsado = ?  WHERE idArticulo = ?"); //Modificar la tabla articuloPedido el campo embolsado cuando el idArticulo sea lo seleccionado en la tabla
+		String sql = "UPDATE articuloPedido SET embolsado = ?  WHERE idArticulo = ?"; //Modificar la tabla articuloPedido el campo embolsado cuando el idArticulo sea lo seleccionado en la tabla
 		
 		db.executeUpdate(sql,1,idArticulo); //La primera ? cambiamos embolsado por un 1 y la segunda depende del valor idArticulo 
 	}

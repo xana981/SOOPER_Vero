@@ -87,9 +87,7 @@ public class SupermercadoView {
 		btnEmbolsar = new JButton("Embolsar");
 		btnEmbolsar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
 				controller.embolsarArticulos(); //llamada al controlador
-			
 			}
 		});
 		frmSupermercado.getContentPane().add(btnEmbolsar, "cell 0 3");
@@ -129,5 +127,13 @@ public class SupermercadoView {
 	}		
 	public JTable getTable() {
 		return this.table;
+	}
+	
+	public DefaultTableModel getmodeloArticulo() {
+		return this.modeloArticulo;
+	}
+	
+	public DefaultTableModel getmodeloListaEmbolsados() {
+		return this.modeloListaEmbolsados;
 	}
 }

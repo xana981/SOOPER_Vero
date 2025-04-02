@@ -49,13 +49,25 @@ public class SupermercadoController {
 
 	public void embolsarArticulos() {
 		
-		String idArticulo; //creo la variable							
-		
+		String idArticulo; //creo la variable																
+																											  //setValueAt,se le infica la fila, la columna y el valor que le queremos meter
 		idArticulo = this.view.getTable().getValueAt(this.view.getTable().getSelectedRow(),0).toString();     //inicializo la variable y le saco el valor a la tabla, lo seleccionado
 																											  //(getSelectedRow) Me devuelve el numero de fila que esta seleccionada, devuelve un entero
-		this.model.embolsaArticulo(Integer.parseInt(idArticulo));
+		this.model.embolsaArticulo(Integer.parseInt(idArticulo)); 
 		
+		this.view.getmodeloArticulo().removeRow(this.view.getTable().getSelectedRow());       //Eliminamos (removeRow) la fila que tenemos seleccionada (getSelectedRow) de la tabla de arriba
 		
+		Object[] fila = null;
+		
+		this.view.getmodeloListaEmbolsados().addRow(fila);
+		
+		//Para sacar la fila
+		
+		int numeroFila = this.view.getmodeloListaEmbolsados().getRowCount();
+		
+		this.view.getmodeloListaEmbolsados().setValueAt(idArticulo,numeroFila-1,0);
+		
+		this.view.getmodeloListaEmbolsados().setValueAt("999",numeroFila-1,1);
 		
 	}
 
